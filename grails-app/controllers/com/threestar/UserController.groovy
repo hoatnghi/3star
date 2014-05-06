@@ -36,7 +36,7 @@ class UserController {
 	def logout = {
 		if(session.user) {
 			session.user = null
-			redirect(action:'login')
+			redirect(uri: '/')
 		}
 	}
 }
