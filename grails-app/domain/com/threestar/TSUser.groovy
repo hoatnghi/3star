@@ -2,7 +2,6 @@ package com.threestar
 
 import groovy.transform.ToString;
 
-@ToString(includeNames = true)
 class TSUser {
 
 	transient springSecurityService

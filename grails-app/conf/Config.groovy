@@ -119,7 +119,8 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 		   
-   debug 'grails.app'
+   //debug 'grails.app'
+   //debug 'org.springframework.security'
 }
 
 
@@ -142,4 +143,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/fonts/**':                   ['permitAll'],
 	'/**/images/**':                  ['permitAll']
 ]
-
+/*
+grails.plugin.springsecurity.useSecurityEventListener = true
+grails.plugin.springsecurity.onAbstractAuthenticationFailureEvent = { e, appCtx ->
+   println "\nERROR auth failed for user $e.authentication.name: $e.exception\n"
+}
+*/
