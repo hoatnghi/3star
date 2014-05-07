@@ -52,7 +52,7 @@
 	            <div class="row">
 	                
 	                <div class="col-lg-12 col-md-12">
-	                    <h3><i class="fa fa-pencil"></i> Introduction</h3>
+	                    <h3><i class="fa fa-home"></i> Introduction</h3>
 	                    <p>Your reliable source of capital to start up a business
 It’s our pleasure to welcome you to three star company which really extends income to you through mobile money social networking.
 Our vision is to allow you alleviate poverty through helping one another inform of a circle of friends.

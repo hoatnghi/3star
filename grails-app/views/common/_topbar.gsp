@@ -8,7 +8,9 @@
              <span class="icon-bar"></span>
          </button>
          <a class="navbar-brand" href="">
-		 	<i class="icon-star-empty">3Star</i>
+		 	<i class="fa fa-star-o"></i>
+		 	<i class="fa fa-star"></i>
+		 	<i class="fa fa-star-o"></i>
 		 </a>
      </div>
      <!-- /.navbar-header -->
@@ -19,7 +21,7 @@
              <li><a href="about.html">About</a></li>
              <li><g:link controller="public" action="faq">FAQ</g:link>
              </li>
-             <li><a href="contact.php">Contact</a></li>
+             <li><g:link controller="public" action="contact">Contact</g:link></li>
              <li class="dropdown">
                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
                  <ul class="dropdown-menu">

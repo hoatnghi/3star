@@ -121,3 +121,25 @@ log4j = {
 		   
    debug 'grails.app'
 }
+
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.password.algorithm='SHA-256'
+grails.plugin.springsecurity.password.hash.iterations=1 
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.threestar.TSUser'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.threestar.TSUserTSRole'
+grails.plugin.springsecurity.authority.className = 'com.threestar.TSRole'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                              ['permitAll'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll'],
+	'/public/**':                     ['permitAll'],
+	'/**font-awesome/**':             ['permitAll'],
+	'/**/fonts/**':                   ['permitAll'],
+	'/**/images/**':                  ['permitAll']
+]
+
