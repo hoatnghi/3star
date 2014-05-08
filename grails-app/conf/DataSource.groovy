@@ -28,7 +28,7 @@ environments {
             //url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
 			url = "jdbc:mysql://localhost/star?useUnicode=yes&characterEncoding=UTF-8"
 			username = "root"
-			password = ""
+			password = "root"
         }
     }
     test {
@@ -37,7 +37,7 @@ environments {
             //url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
 			url = "jdbc:mysql://localhost/star?useUnicode=yes&characterEncoding=UTF-8"
 			username = "root"
-			password = ""
+			password = "root"
         }
     }
     production {
@@ -46,7 +46,7 @@ environments {
             //url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
 			url = "jdbc:mysql://localhost/star?useUnicode=yes&characterEncoding=UTF-8"
 			username = "root"
-			password = ""
+			password = "root"
             properties {
                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
                jmxEnabled = true

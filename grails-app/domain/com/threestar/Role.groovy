@@ -1,6 +1,6 @@
 package com.threestar
 
-class TSRole {
+class Role {
 
 	String authority
 

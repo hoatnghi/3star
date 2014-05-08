@@ -123,13 +123,13 @@ log4j = {
    //debug 'org.springframework.security'
 }
 
-
 // Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.password.algorithm='SHA-256'
-grails.plugin.springsecurity.password.hash.iterations=1 
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.threestar.TSUser'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.threestar.TSUserTSRole'
-grails.plugin.springsecurity.authority.className = 'com.threestar.TSRole'
+grails.plugin.springsecurity.password.algorithm = 'SHA-256'
+grails.plugin.springsecurity.password.hash.iterations = 1 
+grails.plugin.springsecurity.logout.postOnly = false
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.threestar.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.threestar.UserRole'
+grails.plugin.springsecurity.authority.className = 'com.threestar.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                              ['permitAll'],
 	'/index':                         ['permitAll'],
@@ -138,14 +138,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
-	'/public/**':                     ['permitAll'],
 	'/**font-awesome/**':             ['permitAll'],
 	'/**/fonts/**':                   ['permitAll'],
-	'/**/images/**':                  ['permitAll']
+	'/**/images/**':                  ['permitAll'],
+	'/public/**':                     ['permitAll']
 ]
-/*
-grails.plugin.springsecurity.useSecurityEventListener = true
-grails.plugin.springsecurity.onAbstractAuthenticationFailureEvent = { e, appCtx ->
-   println "\nERROR auth failed for user $e.authentication.name: $e.exception\n"
-}
-*/
+

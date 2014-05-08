@@ -65,7 +65,7 @@
              </li>
          </ul>
          
-         <g:if test="${session.user}">
+         <sec:ifLoggedIn>
          <ul class="nav navbar-nav navbar-right">
 	         <li class="dropdown">
 	             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -126,21 +126,22 @@
 	                 <li><g:link controller="secure" action="profile"><i class="fa fa-user fa-fw"></i> User Profile</g:link></li>
 	                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
 	                 <li class="divider"></li>
-	                 <li><g:link controller="user" action="logout"><i class="fa fa-sign-out fa-fw"></i> Logout</g:link>
+	                 <li><g:link controller="logout"><i class="fa fa-sign-out fa-fw"></i> Logout</g:link>
 	                 </li>
 	             </ul>
 	             <!-- /.dropdown-user -->
 	         </li>
 	         <!-- /.dropdown -->
 	     </ul>
-	     </g:if>
-	     <g:else>
+	     </sec:ifLoggedIn>
+	     <sec:ifNotLoggedIn>
 	     	 <ul class="nav navbar-nav navbar-right">
 		         <li class="dropdown">
-		         	<g:link controller="user" action="login">Login</g:link>
+		         	<g:link controller="login">Login</g:link>
 		         </li>
 	         </ul>
-	     </g:else>
+         </sec:ifNotLoggedIn>
+	     
 	     <!-- /.navbar-top-links -->
      </div>
  </nav>

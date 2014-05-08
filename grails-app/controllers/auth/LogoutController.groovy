@@ -14,6 +14,8 @@
  */
 package auth
 
+import grails.plugin.springsecurity.SpringSecurityUtils;
+
 import javax.servlet.http.HttpServletResponse
 
 import org.springframework.security.access.annotation.Secured

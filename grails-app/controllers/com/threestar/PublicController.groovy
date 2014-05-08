@@ -6,11 +6,11 @@ class PublicController {
 
     def index() { }
 	
+	def login() {
+		render (view : "login")
+	}
+	
 	def faq() {
-		log.debug("abc")
-		log.debug TSUser.list()
-		def pass = springSecurityService.encodePassword('password')
-		log.debug(pass)
 		render (view : "faq")
 	}
 	

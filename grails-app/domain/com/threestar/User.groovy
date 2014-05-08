@@ -1,8 +1,6 @@
 package com.threestar
 
-import groovy.transform.ToString;
-
-class TSUser {
+class User {
 
 	transient springSecurityService
 
@@ -24,8 +22,8 @@ class TSUser {
 		password column: '`password`'
 	}
 
-	Set<TSRole> getAuthorities() {
-		TSUserTSRole.findAllByTSUser(this).collect { it.TSRole } as Set
+	Set<Role> getAuthorities() {
+		UserRole.findAllByUser(this).collect { it.role } as Set
 	}
 
 	def beforeInsert() {
