@@ -7,7 +7,7 @@
              <span class="icon-bar"></span>
              <span class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" href="">
+         <a class="navbar-brand" href="${createLink(uri: '/')}">
 		 	<i class="fa fa-star-o"></i>
 		 	<i class="fa fa-star"></i>
 		 	<i class="fa fa-star-o"></i>
@@ -18,9 +18,8 @@
      <!-- Collect the nav links, forms, and other content for toggling -->
      <div class="collapse navbar-collapse navbar-ex1-collapse">
          <ul class="nav navbar-nav navbar-left">
-             <li><a href="about.html">About</a></li>
-             <li><g:link controller="public" action="faq">FAQ</g:link>
-             </li>
+             <li><g:link controller="public" action="about">About</g:link></li>
+             <li><g:link controller="public" action="faq">FAQ</g:link></li>
              <li><g:link controller="public" action="contact">Contact</g:link></li>
              <li class="dropdown">
                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>

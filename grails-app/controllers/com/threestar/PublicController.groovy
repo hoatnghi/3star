@@ -6,8 +6,8 @@ class PublicController {
 
     def index() { }
 	
-	def login() {
-		render (view : "login")
+	def about() {
+		render (view : "about")
 	}
 	
 	def faq() {
