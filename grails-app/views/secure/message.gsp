@@ -4,6 +4,33 @@
 		<meta name="layout" content="main"/>
 	</head>
 	<body>
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try {
+                ace.settings.check('breadcrumbs', 'fixed')
+            } catch (e) {
+            }
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="icon-home home-icon"></i>
+                <a href="${createLink(uri: '/')}">Home</a>
+            </li>
+            <li class="active">Message</li>
+        </ul><!-- .breadcrumb -->
+
+        <div class="nav-search" id="nav-search">
+            <form class="form-search">
+                <span class="input-icon">
+                    <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input"
+                           autocomplete="off"/>
+                    <i class="icon-search nav-search-icon"></i>
+                </span>
+            </form>
+        </div><!-- #nav-search -->
+    </div>
+
     <div class="page-content">
     <div class="page-header">
         <h1>
@@ -52,47 +79,6 @@
                 <span class="bigger-110">Draft</span>
             </a>
         </li>
-
-        <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <i class="pink icon-tags bigger-130"></i>
-
-                <span class="bigger-110">
-                    Tags
-                    <i class="icon-caret-down"></i>
-                </span>
-            </a>
-
-            <ul class="dropdown-menu dropdown-light-blue dropdown-125">
-                <li>
-                    <a data-toggle="tab" href="#tag-1" data-target="tag-1">
-                        <span class="mail-tag badge badge-pink"></span>
-                        <span class="pink">Tag#1</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a data-toggle="tab" href="#tag-family" data-target="tag-family">
-                        <span class="mail-tag badge badge-success"></span>
-                        <span class="green">Family</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a data-toggle="tab" href="#tag-friends" data-target="tag-friends">
-                        <span class="mail-tag badge badge-info"></span>
-                        <span class="blue">Friends</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a data-toggle="tab" href="#tag-work" data-target="tag-work">
-                        <span class="mail-tag badge badge-grey"></span>
-                        <span class="grey">Work</span>
-                    </a>
-                </li>
-            </ul>
-        </li><!-- /.dropdown -->
     </ul>
 
     <div class="tab-content no-border no-padding">
@@ -459,12 +445,12 @@
     <div class="message-list" id="message-list">
     <div class="message-item message-unread">
         <label class="inline">
-            <input type="checkbox" class="ace" />
+            <input type="checkbox" class="ace"/>
             <span class="lbl"></span>
         </label>
 
         <i class="message-star icon-star orange2"></i>
-        <span class="sender" title="Alex John Red Smith">Alex John Red Smith </span>
+        <span class="sender" title="Alex John Red Smith">Alex John Red Smith</span>
         <span class="time">1:33 pm</span>
 
         <span class="summary">
@@ -476,7 +462,7 @@
 
     <div class="message-item message-unread">
         <label class="inline">
-            <input type="checkbox" class="ace" />
+            <input type="checkbox" class="ace"/>
             <span class="lbl"></span>
         </label>
 
@@ -502,12 +488,12 @@
 
     <div class="message-item">
         <label class="inline">
-            <input type="checkbox" class="ace" />
+            <input type="checkbox" class="ace"/>
             <span class="lbl"></span>
         </label>
 
         <i class="message-star icon-star-empty light-grey"></i>
-        <span class="sender" title="Philip Markov">Philip Markov </span>
+        <span class="sender" title="Philip Markov">Philip Markov</span>
         <span class="time">10:15 am</span>
 
         <span class="attachment">
@@ -526,12 +512,12 @@
 
     <div class="message-item">
         <label class="inline">
-            <input type="checkbox" class="ace" />
+            <input type="checkbox" class="ace"/>
             <span class="lbl"></span>
         </label>
 
         <i class="message-star icon-star orange2"></i>
-        <span class="sender" title="Sabrina">Sabrina </span>
+        <span class="sender" title="Sabrina">Sabrina</span>
         <span class="time">Yesterday</span>
 
         <span class="summary">
@@ -543,12 +529,12 @@
 
     <div class="message-item">
         <label class="inline">
-            <input type="checkbox" class="ace" />
+            <input type="checkbox" class="ace"/>
             <span class="lbl"></span>
         </label>
 
         <i class="message-star icon-star-empty light-grey"></i>
-        <span class="sender" title="Philip Markov">Philip Markov </span>
+        <span class="sender" title="Philip Markov">Philip Markov</span>
         <span class="time">Yesterday</span>
 
         <span class="attachment">
@@ -565,12 +551,12 @@
 
     <div class="message-item">
         <label class="inline">
-            <input type="checkbox" class="ace" />
+            <input type="checkbox" class="ace"/>
             <span class="lbl"></span>
         </label>
 
         <i class="message-star icon-star-empty light-grey"></i>
-        <span class="sender" title="Doctor Gomenz">Doctor Gomenz </span>
+        <span class="sender" title="Doctor Gomenz">Doctor Gomenz</span>
         <span class="time">April 5</span>
 
         <span class="summary">
@@ -582,12 +568,12 @@
 
     <div class="message-item">
         <label class="inline">
-            <input type="checkbox" class="ace" />
+            <input type="checkbox" class="ace"/>
             <span class="lbl"></span>
         </label>
 
         <i class="message-star icon-star-empty light-grey"></i>
-        <span class="sender" title="Robin Hood">Robin Hood </span>
+        <span class="sender" title="Robin Hood">Robin Hood</span>
         <span class="time">April 4</span>
 
         <span class="summary">
@@ -602,12 +588,12 @@
 
     <div class="message-item">
         <label class="inline">
-            <input type="checkbox" class="ace" />
+            <input type="checkbox" class="ace"/>
             <span class="lbl"></span>
         </label>
 
         <i class="message-star icon-star-empty light-grey"></i>
-        <span class="sender" title="Google Inc">Google Inc </span>
+        <span class="sender" title="Google Inc">Google Inc</span>
         <span class="time">April 3</span>
 
         <span class="summary">
@@ -620,12 +606,12 @@
 
     <div class="message-item">
         <label class="inline">
-            <input type="checkbox" class="ace" />
+            <input type="checkbox" class="ace"/>
             <span class="lbl"></span>
         </label>
 
         <i class="message-star icon-star-empty light-grey"></i>
-        <span class="sender" title="Shrek">Shrek </span>
+        <span class="sender" title="Shrek">Shrek</span>
         <span class="time">March 28</span>
 
         <span class="attachment">
@@ -644,12 +630,12 @@
 
     <div class="message-item">
         <label class="inline">
-            <input type="checkbox" class="ace" />
+            <input type="checkbox" class="ace"/>
             <span class="lbl"></span>
         </label>
 
         <i class="message-star icon-star-empty light-grey"></i>
-        <span class="sender" title="Yahoo!">Yahoo! </span>
+        <span class="sender" title="Yahoo!">Yahoo!</span>
         <span class="time">March 27</span>
 
         <span class="summary">
