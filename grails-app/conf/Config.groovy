@@ -35,8 +35,9 @@ grails.mime.types = [ // the first one is the default format
 //grails.urlmapping.cache.maxsize = 1000
 
 // What URL patterns should be processed by the resources plugin
-grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
-grails.resources.adhoc.includes = ['/images/**', '/css/**', '/js/**', '/plugins/**']
+grails.resources.adhoc.patterns = ['/images/*', '/img/*', '/css/*', '/js/*', '/avatars/*', '/font/*']
+grails.resources.adhoc.includes = ['/images/**', '/img/**', '/css/**', '/js/**', '/avatars/**', '/font/**']
+grails.resources.debug=true
 
 // Legacy setting for codec used to encode data with ${}
 grails.views.default.codec = "html"
@@ -138,9 +139,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
-	'/**font-awesome/**':             ['permitAll'],
-	'/**/fonts/**':                   ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
+	'/**/avatars/**':                 ['permitAll'],
+	'/**/font/**':                    ['permitAll'],
+	'/**/img/**':                     ['permitAll'],
 	'/public/**':                     ['permitAll']
 ]
 

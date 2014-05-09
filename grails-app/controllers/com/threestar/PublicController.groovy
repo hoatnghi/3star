@@ -18,15 +18,7 @@ class PublicController {
 		render (view : "contact")
 	}
 
-    def sendContact() {
-
-    }
-
     def join() {
-        render(view: "join")
-    }
-
-    def joinRequest() {
-
+        render (view : "join")
     }
 }
