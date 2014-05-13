@@ -40,7 +40,8 @@
 
                             <li>
                                 <a href="#">
-                                    <img src="${resource(dir: 'avatars', file: 'avatar.jpg')}" class="msg-photo" alt="Alex's Avatar"/>
+                                    <img src="${resource(dir: 'avatars', file: 'avatar.jpg')}" class="msg-photo"
+                                         alt="Alex's Avatar"/>
                                     <span class="msg-body">
                                         <span class="msg-title">
                                             <span class="blue">Alex:</span>
@@ -57,7 +58,8 @@
 
                             <li>
                                 <a href="#">
-                                    <img src="${resource(dir: 'avatars', file: 'avatar3.jpg')}" class="msg-photo" alt="Susan's Avatar"/>
+                                    <img src="${resource(dir: 'avatars', file: 'avatar3.jpg')}" class="msg-photo"
+                                         alt="Susan's Avatar"/>
                                     <span class="msg-body">
                                         <span class="msg-title">
                                             <span class="blue">Susan:</span>
@@ -74,7 +76,8 @@
 
                             <li>
                                 <a href="#">
-                                    <img src="${resource(dir: 'avatars', file: 'avatar4.jpg')}" class="msg-photo" alt="Bob's Avatar"/>
+                                    <img src="${resource(dir: 'avatars', file: 'avatar4.jpg')}" class="msg-photo"
+                                         alt="Bob's Avatar"/>
                                     <span class="msg-body">
                                         <span class="msg-title">
                                             <span class="blue">Bob:</span>
@@ -100,7 +103,8 @@
 
                     <li class="light-blue">
                         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                            <img class="nav-user-photo" src="${resource(dir: 'avatars', file: 'user.jpg')}" alt="Jason's Photo"/>
+                            <img class="nav-user-photo" src="${resource(dir: 'avatars', file: 'user.jpg')}"
+                                 alt="Jason's Photo"/>
                             <span class="user-info">
                                 <small>Welcome,</small>
                                 Jason
@@ -134,7 +138,7 @@
                             </li>
                         </ul>
                     </li>
-                 </ul><!-- /.ace-nav -->
+                </ul><!-- /.ace-nav -->
             </sec:ifLoggedIn>
             <sec:ifNotLoggedIn>
                 <ul class="nav ace-nav">
@@ -143,7 +147,7 @@
                     </li>
                 </ul>
             </sec:ifNotLoggedIn>
-            </div><!-- /.navbar-header -->
+        </div><!-- /.navbar-header -->
 
     </div><!-- /.container -->
 </div>

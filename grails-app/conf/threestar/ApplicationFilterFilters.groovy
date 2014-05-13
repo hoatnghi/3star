@@ -12,9 +12,11 @@ class ApplicationFilterFilters {
                     if (request.forwardURI.equals(request.servletContext.getContextPath() + "/"))
                         request.setAttribute("home", true)
                     else if (request.forwardURI.equals(request.servletContext.getContextPath() + "/secure/profile"))
-                            request.setAttribute("profile", true)
+                        request.setAttribute("profile", true)
                     else if (request.forwardURI.equals(request.servletContext.getContextPath() + "/secure/message"))
-                            request.setAttribute("message", true)
+                        request.setAttribute("message", true)
+                    else if (request.forwardURI.equals(request.servletContext.getContextPath() + "/admin/review"))
+                        request.setAttribute("review", true)
                 }
             }
             after = { Map model ->

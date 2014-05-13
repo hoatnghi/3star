@@ -1,4 +1,4 @@
-package threestar
+package com.threestar
 
 import grails.test.mixin.Mock
 import spock.lang.Specification
