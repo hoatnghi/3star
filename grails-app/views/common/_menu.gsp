@@ -29,21 +29,21 @@
 </div><!-- #sidebar-shortcuts -->
 
 <ul class="nav nav-list">
-    <li class="active">
+    <li <g:if test="${dashboard}">class="active"</g:if>>
         <a href="index.html">
             <i class="icon-dashboard"></i>
             <span class="menu-text">Dashboard</span>
         </a>
     </li>
 
-    <li>
+    <li <g:if test="${message}">class="active"</g:if>>
         <g:link controller="secure" action="message">
             <i class="icon-text-width"></i>
             <span class="menu-text">Message</span>
         </g:link>
     </li>
 
-    <li>
+    <li <g:if test="${profile}">class="active"</g:if>>
         <g:link controller="secure" action="profile">
             <i class="icon-list-alt"></i>
             <span class="menu-text">Profile</span>

@@ -48,7 +48,9 @@
         </div>
 
         <div class="main-container" id="main-container">
+            <g:if test="${home}">
                 <g:render template="/common/slider" />
+            </g:if>
 
             <script type="text/javascript">
                 try{ace.settings.check('main-container' , 'fixed')}catch(e){}

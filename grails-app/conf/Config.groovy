@@ -120,7 +120,7 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 		   
-   //debug 'grails.app'
+    debug 'grails.app'
    //debug 'org.springframework.security'
 }
 
