@@ -145,6 +145,9 @@
                     <li class="light-blue">
                         <g:link controller="login">Login</g:link>
                     </li>
+                    <li class="blue">
+                        <g:link controller="public" action="register">Register</g:link>
+                    </li>
                 </ul>
             </sec:ifNotLoggedIn>
         </div><!-- /.navbar-header -->
