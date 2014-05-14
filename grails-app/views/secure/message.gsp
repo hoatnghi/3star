@@ -928,6 +928,12 @@
 </div><!-- /.col -->
 </div><!-- /.row -->
 </div><!-- /.page-content -->
-
+<!-- page specific plugin scripts -->
+<script src="${resource(dir: 'js', file: 'bootstrap-tag.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery.hotkeys.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'bootstrap-wysiwyg.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery-ui-1.10.3.custom.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery.ui.touch-punch.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery.slimscroll.min.js')}"></script>
 </body>
 </html>

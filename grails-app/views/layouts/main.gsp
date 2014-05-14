@@ -24,8 +24,22 @@
     <link href="${resource(dir: 'css', file: 'ace-skins.min.css')}" rel="stylesheet">
 
     <!--[if lte IE 8]>
-            <link href="${resource(dir: 'css', file: 'ace-ie.min.css')}" rel="stylesheet">
-        <![endif]-->
+        <link href="${resource(dir: 'css', file: 'ace-ie.min.css')}" rel="stylesheet">
+    <![endif]-->
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        var jquery203 = "${resource(dir: 'js', file: 'jquery-2.0.3.min.js')}";
+        window.jQuery || document.write("<script src='" + jquery203 + "'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        var jquery1102 = "${resource(dir: 'js', file: 'jquery-1.10.2.min.js')}";
+        window.jQuery || document.write("<script src='" + jquery1102 + "'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
 
     <!-- ace settings handler -->
     <script src="${resource(dir: 'js', file: 'ace-extra.min.js')}"></script>
@@ -100,36 +114,13 @@
     </a>
 </div><!-- /.main-container -->
 
-<div>
-    <g:render template="/common/footer"></g:render>
-</div>
 <!-- basic scripts -->
-
-<!--[if !IE]> -->
-<script type="text/javascript">
-    var jquery203 = "${resource(dir: 'js', file: 'jquery-2.0.3.min.js')}";
-    window.jQuery || document.write("<script src='" + jquery203 + "'>" + "<" + "/script>");
-</script>
-<!-- <![endif]-->
-
-<!--[if IE]>
-        <script type="text/javascript">
-            var jquery1102 = "${resource(dir: 'js', file: 'jquery-1.10.2.min.js')}";
-            window.jQuery || document.write("<script src='" + jquery1102 + "'>" + "<" + "/script>");
-        </script>
-        <![endif]-->
-
 <script type="text/javascript">
     var jqueryMobile = "${resource(dir: 'js', file: 'jquery.mobile.custom.min.js')}";
     if ("ontouchend" in document) document.write("<script src='" + jqueryMobile + "'>" + "<" + "/script>");
 </script>
 <script src="${resource(dir: 'js', file: 'bootstrap.min.js')}"></script>
 <script src="${resource(dir: 'js', file: 'typeahead-bs2.min.js')}"></script>
-
-<!-- page specific plugin scripts -->
-<script src="${resource(dir: 'js', file: 'jquery-ui-1.10.3.custom.min.js')}"></script>
-<script src="${resource(dir: 'js', file: 'jquery.ui.touch-punch.min.js')}"></script>
-<script src="${resource(dir: 'js', file: 'jquery.slimscroll.min.js')}"></script>
 
 <!-- ace scripts -->
 <script src="${resource(dir: 'js', file: 'ace-elements.min.js')}"></script>

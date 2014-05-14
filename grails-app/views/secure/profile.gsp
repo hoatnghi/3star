@@ -547,5 +547,25 @@
 </div><!-- /.col -->
 </div><!-- /.row -->
 </div><!-- /.page-content -->
+
+<!--[if lte IE 8]>
+  <script src="${resource(dir: 'js', file: 'excanvas.min.js')}"></script>
+<![endif]-->
+
+<script src="${resource(dir: 'js', file: 'jquery-ui-1.10.3.custom.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery.ui.touch-punch.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery.gritter.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'bootbox.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery.slimscroll.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery.easy-pie-chart.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery.hotkeys.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'bootstrap-wysiwyg.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'select2.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'bootstrap-datepicker.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'fuelux.spinner.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'bootstrap-editable.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'ace-editable.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery.maskedinput.min.js')}"></script>
+
 </body>
 </html>

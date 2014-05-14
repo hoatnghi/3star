@@ -50,15 +50,9 @@
             </div>
 
             <div class="table-responsive">
-                <table id="sample-table-2" class="table table-striped table-bordered table-hover">
+                <table id="requestList" class="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th class="center">
-                            <label>
-                                <input type="checkbox" class="ace"/>
-                                <span class="lbl"></span>
-                            </label>
-                        </th>
                         <th>Country</th>
                         <th>
                             <i class="icon-phone bigger-110 hidden-480"></i>
@@ -81,12 +75,6 @@
                     <tbody>
                     <g:each in="${invitation}" var="req">
                         <tr id="_${req.phoneNumber}">
-                            <td class="center">
-                                <label>
-                                    <input type="checkbox" class="ace"/>
-                                    <span class="lbl"></span>
-                                </label>
-                            </td>
                             <td>${req.countryCode}</td>
                             <td>${req.phoneNumber}</td>
                             <td>${req.invitedBy}</td>
@@ -96,49 +84,54 @@
                             </td>
                             <td>
                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                    <button class="blue" id="approve.${req.phoneNumber}">
-                                        <i class="icon-ok-circle bigger-130"></i>
-                                    </button>
+                                    <a id="approve.${req.phoneNumber}" class="blue" href="javascript:approve('${req.phoneNumber}');">
+                                        <i class="icon-ok bigger-130"></i>
+                                    </a>
 
-                                    <button class="green">
+                                    <a class="green" href="#">
                                         <i class="icon-pencil bigger-130"></i>
-                                    </button>
+                                    </a>
 
-                                    <button class="red">
+                                    <a class="red" href="#">
                                         <i class="icon-trash bigger-130"></i>
-                                    </button>
+                                    </a>
                                 </div>
 
-                                <div class="hide">
-                                <!-- The async form to send and replace the modals content with its response -->
-                                    <g:form id="form.${req.phoneNumber}" controller="admin" action="approveRequest"
-                                            method="POST">
-                                        <fieldset>
-                                            <input type="hidden" name="phoneNumber" value="${req.phoneNumber}"/>
-                                        </fieldset>
-                                    </g:form>
+                                <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                    <div class="inline position-relative">
+                                        <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
+                                            <i class="icon-caret-down icon-only bigger-120"></i>
+                                        </button>
+
+                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
+                                            <li>
+                                                <a href="#" class="tooltip-info" data-rel="tooltip" title="Approve">
+                                                    <span class="blue">
+                                                        <i class="icon-zoom-in bigger-120"></i>
+                                                    </span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+                                                    <span class="green">
+                                                        <i class="icon-edit bigger-120"></i>
+                                                    </span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" class="tooltip-error" data-rel="tooltip" title="Decline">
+                                                    <span class="red">
+                                                        <i class="icon-trash bigger-120"></i>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
-
-                        <script type="text/javascript">
-                            jQuery(function ($) {
-                                jQuery('#approve.${req.phoneNumber}').on('click', function () {
-                                    alert('test')
-                                    var form = $('#form.${req.phoneNumber}');
-                                    var target = $('#_${req.phoneNumber}');
-                                    $.ajax({
-                                        type: $form.attr('method'),
-                                        url: $form.attr('action'),
-                                        data: $form.serialize(),
-
-                                        success: function (data, status) {
-                                            $target.html(data);
-                                        }
-                                    });
-                                });
-                            })
-                        </script>
                     </g:each>
                     </tbody>
                 </table>
@@ -147,6 +140,23 @@
         </div><!-- /.col -->
     </div><!-- /.row -->
 </div><!-- /.page-content -->
-
+<script src="${resource(dir: 'js', file: 'jquery.dataTables.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery.dataTables.bootstrap.js')}"></script>
+<script type="text/javascript">
+    function approve (phone) {
+        var row = $('#_'+phone)[0];
+        $.ajax({
+            type: "POST",
+            url: "${createLink(controller: "admin", action: "approveRequest")}",
+            data: {phoneNumber: phone},
+            error: function (data) {
+                alert("There was a problem" + data);
+            },
+            success: function (data) {
+                $('#requestList').dataTable().fnDeleteRow(row);
+            }
+        });
+    }
+</script>
 </body>
 </html>

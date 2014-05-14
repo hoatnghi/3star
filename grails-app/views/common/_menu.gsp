@@ -50,7 +50,7 @@
         </g:link>
     </li>
 
-    <li <g:if test="${request}">class="active"</g:if>>
+    <li <g:if test="${review}">class="active"</g:if>>
         <g:link controller="admin" action="review">
             <i class="icon-list-alt"></i>
             <span class="menu-text">Request</span>

@@ -11,13 +11,15 @@ class AdminController {
     }
 
     def approveRequest() {
-        def p = Invitation.findAllByPhoneNumber(params.phoneNumber)
-        if (p.size() == 1) {
-            def invite = p.get(0)
-            invite.status = 'PND'
-            // TODO send SMS message
-            invite.save(flush: true)
+        if (request.isXhr()) {
+            def p = Invitation.findAllByPhoneNumber(params.phoneNumber)
+            if (p.size() == 1) {
+                def invite = p.get(0)
+                invite.status = 'PND'
+                // TODO send SMS message
+                invite.save(flush: true)
+                render(invite.status)
+            }
         }
-        redirect(action: "review")
     }
 }
