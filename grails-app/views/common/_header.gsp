@@ -146,7 +146,7 @@
                         <g:link controller="login">Login</g:link>
                     </li>
                     <li class="blue">
-                        <g:link controller="public" action="register">Register</g:link>
+                        <g:link controller="register" action="index">Register</g:link>
                     </li>
                 </ul>
             </sec:ifNotLoggedIn>

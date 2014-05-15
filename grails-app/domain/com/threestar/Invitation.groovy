@@ -1,6 +1,6 @@
 package com.threestar
 
-class Invitation {
+class Invitation implements Serializable {
 
     private static final NIL_DATE = new Date(0)
 

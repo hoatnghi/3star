@@ -8,7 +8,8 @@ class BootStrap {
         if (!User.count()) {
             /*The default password is 'password'*/
             def password = 'admin'
-            def user = new User(username: 'admin', password: password, enabled: true,
+            def user = new User(username: 'admin', password: password, phoneNumber: '0000000000', level: 1,
+                    parentId: '', enabled: true,
                     accountExpired: false, accountLocked: false, passwordExpired: false)
                     .save(flush: true)
             def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true, insert: true)
@@ -17,7 +18,6 @@ class BootStrap {
             /*create the first user role map*/
             UserRole.create(user, adminRole, true)
         }
-
     }
 
     def destroy = {
