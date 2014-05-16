@@ -49,11 +49,18 @@
             <span class="menu-text">Profile</span>
         </g:link>
     </li>
-
+    <li <g:if test="${invite}">class="active"</g:if>>
+        <g:link controller="secure" action="invite">
+            <i class="icon-envelope"></i>
+            <span class="menu-text">Invite</span>
+        </g:link>
+    </li>
+    <sec:ifAnyGranted roles="ROLE_ADMIN">
     <li <g:if test="${review}">class="active"</g:if>>
         <g:link controller="admin" action="review">
-            <i class="icon-list-alt"></i>
+            <i class="icon-archive"></i>
             <span class="menu-text">Request</span>
         </g:link>
     </li>
+    </sec:ifAnyGranted>
 </ul><!-- /.nav-list -->

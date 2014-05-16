@@ -15,6 +15,8 @@ class ApplicationFilterFilters {
                         request.setAttribute("profile", true)
                     else if (request.forwardURI.equals(request.servletContext.getContextPath() + "/secure/message"))
                         request.setAttribute("message", true)
+                    else if (request.forwardURI.equals(request.servletContext.getContextPath() + "/secure/invite"))
+                        request.setAttribute("invite", true)
                     else if (request.forwardURI.equals(request.servletContext.getContextPath() + "/admin/review"))
                         request.setAttribute("review", true)
                 }

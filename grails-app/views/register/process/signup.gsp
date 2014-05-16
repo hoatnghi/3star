@@ -66,64 +66,82 @@
                                         </li>
                                     </ul>
                                 </div>
-
-                                <g:hasErrors bean="${invitation}">
-                                    <div class="errors">
-                                        <g:renderErrors bean="${invitation}" as="list"/>
-                                    </div>
-                                </g:hasErrors>
-                                <div>
+                                <hr/>
+                                <div class="well">
                                     <g:if test="${message}">
                                         <h3 class="lighter block red">${message}</h3>
                                     </g:if>
-                                    <g:else>
-                                        <h3 class="lighter block green">Enter the following information</h3>
-                                    </g:else>
                                 </div>
+                                <g:hasErrors bean="${payments}">
+                                    <div class="errors">
+                                        <g:renderErrors bean="${payments}" as="list"/>
+                                    </div>
+                                </g:hasErrors>
                                 <g:form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="country">Your country</label>
+                                        <label class="col-sm-3 control-label no-padding-right" for="country"> Country</label>
 
-                                        <g:select id="country" name="countryCode" keys="${[256, 254, 255]}"
-                                                  from="${['Uganda', 'Kenya', 'Tanzania']}"
-                                                  value="${invitation?.countryCode}"
-                                                  data-placeholder="Choose a Country...">
-                                        </g:select>
+                                        <div class="col-sm-9">
+                                            <g:select id="country" name="countryCode" keys="${[256, 254, 255]}"
+                                                      from="${['Uganda', 'Kenya', 'Tanzania']}"
+                                                      value="${invitation?.countryCode}"
+                                                      disabled="true">
+                                            </g:select>
+                                        </div>
                                     </div>
-
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label no-padding-right" for="phoneNumber"> Phone Number</label>
 
                                         <div class="col-sm-9">
-                                            <input class="form-control input-mask-phone"
-                                                   placeholder="(999) 999-9999" type="text" id="phoneNumber"
-                                                   name="phoneNumber" value="${invitation?.phoneNumber}"/>
+                                            <input disabled id="phoneNumber" name="phoneNumber" type="text" class="col-xs-10 col-sm-5" value="${invitation.phoneNumber}" />
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label no-padding-right" for="invitedBy">
-                                            What is the phone number that send invitation to you?
-                                        </label>
+                                        <label class="col-sm-3 control-label no-padding-right">Verification Code</label>
 
                                         <div class="col-sm-9">
-                                            <input class="form-control input-mask-phone"
-                                                   placeholder="(999) 999-9999" type="text" id="invitedBy"
-                                                   name="invitedBy"
-                                                   value="${invitation?.invitedBy?.phoneNumber}"/>
+                                            <span class="input-icon">
+                                                <input type="text" id="verifyCode" name="verifyCode" placeholder="Verification Code"/>
+                                            </span>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right">Username</label>
 
+                                        <div class="col-sm-9">
+                                            <span class="input-icon">
+                                                <input type="text" id="username" name="username" placeholder="Username"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right">Password</label>
+
+                                        <div class="col-sm-9">
+                                            <span class="input-icon">
+                                                <input type="password" id="password" name="password" placeholder="Password"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right">Re-enter Password</label>
+
+                                        <div class="col-sm-9">
+                                            <span class="input-icon">
+                                                <input type="password" id="repassword" name="repassword" placeholder="re-enter password"/>
+                                            </span>
+                                        </div>
+                                    </div>
                                     <div class="row-fluid wizard-actions">
-                                        <button type="submit" id="_eventId_request" name="_eventId_request"
-                                                class="btn btn-prev">
+                                        <button type="submit" class="btn btn-prev" id="_eventId_previous"
+                                                name="_eventId_previous">
                                             <i class="icon-arrow-left"></i>
-                                            Request Form
+                                            Previous
                                         </button>
 
-                                        <button type="submit" id="_eventId_verify" name="_eventId_verify"
-                                                class="btn btn-success btn-next" data-last="Finish ">
-                                            Next
+                                        <button type="submit" class="btn btn-success btn-next" id="_eventId_submit"
+                                                name="_eventId_submit" data-last="Finish ">
+                                            Submit
                                             <i class="icon-arrow-right icon-on-right"></i>
                                         </button>
                                     </div>
@@ -136,10 +154,6 @@
             <!-- PAGE CONTENT ENDS -->
         </div>
     </div>
-
 </div>
-<script>
-    $('.input-mask-phone').mask('(999) 999-9999');
-</script>
 </body>
 </html>

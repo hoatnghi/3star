@@ -57,21 +57,22 @@
 
                                         <li data-target="#step3" class="active">
                                             <span class="step">3</span>
+                                            <span class="title">Information</span>
+                                        </li>
+
+                                        <li data-target="#step4" class="active">
+                                            <span class="step">4</span>
                                             <span class="title">Congratuation</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <hr/>
-                                <g:hasErrors bean="${bean}">
-                                    <div class="errors">
-                                        <g:renderErrors bean="${bean}" as="list"/>
-                                    </div>
-                                </g:hasErrors>
                                 <g:form class="form-horizontal">
-                                    <div class="step-pane" id="step3">
+                                    <div class="step-pane" id="step4">
                                         <div class="center">
                                             <h3 class="green">Congrats!</h3>
-                                            Your product is ready to ship! Click finish to continue!
+                                            Congratuation! You've completed the sign up process.
+                                            Click Finish button to login to your pages.
                                         </div>
                                     </div>
 
