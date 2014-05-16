@@ -19,6 +19,9 @@ class Invitation implements Serializable {
         code blank: false
     }
 
+    static hasMany = [payments: Payment]
+    static mappedBy = [payments: "invitation"]
+
     def beforeInsert() {
         if (createdDate == NIL_DATE) {
             createdDate = new Date()
