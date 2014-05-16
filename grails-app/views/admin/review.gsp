@@ -27,17 +27,16 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            Join Request
+            Request Form
         </h1>
     </div><!-- /.page-header -->
 
     <div class="row">
         <div class="col-xs-12">
             <!-- PAGE CONTENT BEGINS -->
-            <h3 class="header smaller lighter blue">Join Request</h3>
 
             <div class="table-header">
-                Results for "Latest Join Request"
+            Table of request need to approve for sign up
             </div>
 
             <div class="table-responsive">
@@ -68,14 +67,15 @@
                         <tr id="_${req.phoneNumber}">
                             <td>${req.countryCode}</td>
                             <td>${req.phoneNumber}</td>
-                            <td>${req.invitedBy}</td>
+                            <td>(+${req.invitedBy.countryCode}) - ${req.invitedBy.phoneNumber}</td>
                             <td>${req.createdDate}</td>
                             <td class="hidden-480">
                                 <span class="label label-sm label-warning">${req.status}</span>
                             </td>
                             <td>
                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                    <a id="approve.${req.phoneNumber}" class="blue" href="javascript:approve('${req.phoneNumber}');">
+                                    <a id="approve.${req.phoneNumber}" class="blue"
+                                       href="javascript:approve('${req.phoneNumber}');">
                                         <i class="icon-ok bigger-130"></i>
                                     </a>
 
@@ -90,7 +90,8 @@
 
                                 <div class="visible-xs visible-sm hidden-md hidden-lg">
                                     <div class="inline position-relative">
-                                        <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
+                                        <button class="btn btn-minier btn-yellow dropdown-toggle"
+                                                data-toggle="dropdown">
                                             <i class="icon-caret-down icon-only bigger-120"></i>
                                         </button>
 
@@ -134,8 +135,8 @@
 <script src="${resource(dir: 'js', file: 'jquery.dataTables.min.js')}"></script>
 <script src="${resource(dir: 'js', file: 'jquery.dataTables.bootstrap.js')}"></script>
 <script type="text/javascript">
-    function approve (phone) {
-        var row = $('#_'+phone)[0];
+    function approve(phone) {
+        var row = $('#_' + phone)[0];
         $.ajax({
             type: "POST",
             url: "${createLink(controller: "admin", action: "approveRequest")}",
@@ -148,6 +149,10 @@
             }
         });
     }
+
+    $(document).ready(function () {
+        $('#requestList').dataTable();
+    });
 </script>
 </body>
 </html>

@@ -92,12 +92,11 @@
                                                     Your country
                                                 </label>
 
-                                                <select id="country" name="countryCode"
-                                                        data-placeholder="Choose a Country...">
-                                                    <option value="AG">Uganda</option>
-                                                    <option value="AK">Alaska</option>
-                                                    <option value="AZ">Arizona</option>
-                                                </select>
+                                                <g:select id="country" name="countryCode" keys="${[256, 254, 255]}"
+                                                          from="${['Uganda', 'Kenya', 'Tanzania']}"
+                                                          value="${invitation?.countryCode}"
+                                                          data-placeholder="Choose a Country...">
+                                                </g:select>
                                             </div>
 
                                             <div class="step-content">
@@ -112,13 +111,13 @@
 
                                                     <input class="form-control input-mask-phone"
                                                            placeholder="(999) 999-9999" type="text" id="phoneNumber"
-                                                           name="phoneNumber"/>
+                                                           name="phoneNumber" value="${invitation?.phoneNumber}"/>
                                                 </div>
                                             </div>
 
                                             <div class="step-content">
                                                 <label for="invitedBy">
-                                                    What is the phone number that send inviation to you?
+                                                    What is the phone number that send invitation to you?
                                                 </label>
 
                                                 <div class="input-group">
@@ -128,7 +127,8 @@
 
                                                     <input class="form-control input-mask-phone"
                                                            placeholder="(999) 999-9999" type="text" id="invitedBy"
-                                                           name="invitedBy"/>
+                                                           name="invitedBy"
+                                                           value="${invitation?.invitedBy?.phoneNumber}"/>
                                                 </div>
                                             </div>
                                         </div>

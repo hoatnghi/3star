@@ -24,8 +24,9 @@ class PublicController {
     }
 
     def reqInvitation() {
+        def adminPhone = grailsApplication.metadata.'admin.phoneNumber'
         def invitation = new Invitation(phoneNumber: params.phoneNumber, countryCode: params.countryCode,
-                code: '000000', invitedBy: '0000000000', status: 'REQ')
+                code: '000000', invitedBy: User.findByPhoneNumber(adminPhone), status: 'REQ')
         if (!invitation.hasErrors()) {
             invitation.save(flush: true)
             if (!invitation.hasErrors()) {

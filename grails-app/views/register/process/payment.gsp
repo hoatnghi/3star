@@ -65,25 +65,77 @@
 
                                 <div class="well">
                                     <h4>Verification</h4>
-                                    Please provide your invitation from the SMS message you have received.
+                                    Process to pay off the list of payment below:
                                 </div>
-                                <g:hasErrors bean="${bean}">
+                                <g:hasErrors bean="${payments}">
                                     <div class="errors">
-                                        <g:renderErrors bean="${bean}" as="list"/>
+                                        <g:renderErrors bean="${payments}" as="list"/>
                                     </div>
                                 </g:hasErrors>
-                                <g:form class="form-horizontal">
-                                    <div>
-                                        <table>
-                                            <g:each in="${payments}" var="p">
-                                                <tr>
-                                                    <td>${p.key}</td>
-                                                    <td>${p.value}</td>
-                                                </tr>
-                                            </g:each>
-                                        </table>
-                                    </div>
 
+                                <div class="table-responsive">
+                                    <table id="requestList" class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Pay to</th>
+                                            <th>
+                                                <i class="icon-phone bigger-110 hidden-480"></i>
+                                                Phone Number
+                                            </th>
+                                            <th>
+                                                <i class="icon-user bigger-110 hidden-480"></i>
+                                                Amount
+                                            </th>
+                                            <th class="hidden-480">Status</th>
+
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <g:each in="${payments}" var="p">
+                                            <tr>
+                                                <td>${p.payTo}</td>
+                                                <td>
+                                                    (${p.invitation.invitedBy.countryCode}) ${p.invitation.invitedBy.phoneNumber}
+                                                </td>
+                                                <td>${p.amount}</td>
+                                                <td class="hidden-480">
+                                                    <span class="label label-sm label-warning">${p.status}</span>
+                                                </td>
+                                                <td>
+                                                    <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                                        <a class="blue" href="#">
+                                                            <i class="icon-ok bigger-130"></i>
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                                        <div class="inline position-relative">
+                                                            <button class="btn btn-minier btn-yellow dropdown-toggle"
+                                                                    data-toggle="dropdown">
+                                                                <i class="icon-caret-down icon-only bigger-120"></i>
+                                                            </button>
+
+                                                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
+                                                                <li>
+                                                                    <a href="#" class="tooltip-info" data-rel="tooltip"
+                                                                       title="Approve">
+                                                                        <span class="blue">
+                                                                            <i class="icon-zoom-in bigger-120"></i>
+                                                                        </span>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </g:each>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <g:form class="form-horizontal">
                                     <div class="row-fluid wizard-actions">
                                         <button type="submit" class="btn btn-prev" id="_eventId_verify"
                                                 name="_eventId_verify">
@@ -91,8 +143,8 @@
                                             Prev
                                         </button>
 
-                                        <button type="submit" class="btn btn-success btn-next" id="_eventId_complete"
-                                                name="_eventId_complete" data-last="Finish ">
+                                        <button type="submit" class="btn btn-success btn-next" id="_eventId_confirm"
+                                                name="_eventId_confirm" data-last="Finish ">
                                             Next
                                             <i class="icon-arrow-right icon-on-right"></i>
                                         </button>
@@ -106,7 +158,28 @@
             <!-- PAGE CONTENT ENDS -->
         </div>
     </div>
-
 </div>
+<script src="${resource(dir: 'js', file: 'jquery.dataTables.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery.dataTables.bootstrap.js')}"></script>
+<script type="text/javascript">
+    function approve(phone) {
+        var row = $('#_' + phone)[0];
+        $.ajax({
+            type: "POST",
+            url: "${createLink(controller: "admin", action: "approveRequest")}",
+            data: {phoneNumber: phone},
+            error: function (data) {
+                alert("There was a problem" + data);
+            },
+            success: function (data) {
+                //$('#requestList').dataTable().fnDeleteRow(row);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $('#requestList').dataTable();
+    });
+</script>
 </body>
 </html>

@@ -1,11 +1,12 @@
 package com.threestar
 
-class User {
+class User implements Serializable {
 
     transient springSecurityService
 
     String username
     String password
+    String countryCode
     String phoneNumber
     int level
     String parentId

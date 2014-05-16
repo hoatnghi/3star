@@ -33,119 +33,88 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-            Sending Request to Join
+            Request
             <small>
                 <i class="icon-double-angle-right"></i>
-                Payment Confirmation or Submit Join Request
+                Sent your request to administration to process the sign in.
             </small>
         </h1>
     </div><!-- /.page-header -->
 
     <div class="row">
-    <div class="col-sm-12">
-        <g:hasErrors bean="${bean}">
-            <div class="errors">
-                <g:renderErrors bean="${bean}" as="list"/>
+        <div class="col-sm-12">
+            <g:hasErrors bean="${bean}">
+                <div class="errors">
+                    <g:renderErrors bean="${bean}" as="list"/>
+                </div>
+            </g:hasErrors>
+            <div>
+                <g:if test="${flash.message}">
+                    <h3 class="lighter block green">${flash.message}</h3>
+                </g:if>
+                <g:else>
+                    <h3 class="lighter block green">Enter the following information</h3>
+                </g:else>
             </div>
-        </g:hasErrors>
-        <div>
-            <g:if test="${flash.message}">
-                <h3 class="lighter block green">${flash.message}</h3>
-            </g:if>
-            <g:else>
-                <h3 class="lighter block green">Enter the following information</h3>
-            </g:else>
         </div>
-    </div>
-    <div class="col-sm-5">
-        <div class="widget-box">
-            <div class="widget-header">
-                <h4>Request Form</h4>
-            </div>
 
-            <div class="widget-body">
-                <div class="widget-main no-padding">
-                    <g:form controller="public" action="reqInvitation">
-                        <fieldset>
-                            <div>
-                                <label for="country">
-                                    Your country
-                                </label>
+        <div class="col-sm-5">
+            <div class="widget-box">
+                <div class="widget-header">
+                    <h4>Request Form</h4>
+                </div>
 
-                                <select id="country" name="countryCode" data-placeholder="Choose a Country...">
-                                    <option value="AL">Uganda</option>
-                                    <option value="AK">Alaska</option>
-                                    <option value="AZ">Arizona</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="phoneNumber">
-                                    Your phone number
-                                </label>
+                <div class="widget-body">
+                    <div class="widget-main no-padding">
+                        <g:form controller="public" action="reqInvitation">
+                            <fieldset>
+                                <div>
+                                    <label for="country">
+                                        Your country
+                                    </label>
 
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="icon-phone"></i>
-                                    </span>
-
-                                    <input class="form-control input-mask-phone" placeholder="(999) 999-9999" type="text" id="phoneNumber" name="phoneNumber" />
+                                    <select id="country" name="countryCode" data-placeholder="Choose a Country...">
+                                        <option value="256">Uganda</option>
+                                        <option value="254">Kenya</option>
+                                        <option value="255">Tanzania</option>
+                                    </select>
                                 </div>
-                            </div>
-                            <div>
-                                <label for="invitedBy">
-                                    What is the phone number that send inviation to you?
-                                </label>
 
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="icon-phone"></i>
-                                    </span>
+                                <div>
+                                    <label for="phoneNumber">
+                                        Your phone number
+                                    </label>
 
-                                    <input class="form-control input-mask-phone" placeholder="(999) 999-9999" type="text" id="invitedBy" name="invitedBy" />
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="icon-phone"></i>
+                                        </span>
+
+                                        <input class="form-control input-mask-phone" placeholder="(999) 999-9999"
+                                               type="text" id="phoneNumber" name="phoneNumber"/>
+                                    </div>
                                 </div>
+                            </fieldset>
+                            <hr/>
+
+                            <div class="form-actions center">
+                                <button type="submit" class="btn btn-sm btn-success">
+                                    Submit
+                                    <i class="icon-arrow-right icon-on-right bigger-110"></i>
+                                </button>
                             </div>
-                        </fieldset>
-                        <hr />
-                        <div class="form-actions center">
-                            <button type="submit" class="btn btn-sm btn-success">
-                                Submit
-                                <i class="icon-arrow-right icon-on-right bigger-110"></i>
-                            </button>
-                        </div>
-                    </g:form>
+                        </g:form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-7">
-        <div class="widget-box">
-            <div class="widget-header">
-                <h4>Inline Forms</h4>
-            </div>
 
-            <div class="widget-body">
-                <div class="widget-main">
-                    <form class="form-inline">
-                        <input type="text" class="input-small" placeholder="Username" />
-                        <input type="password" class="input-small" placeholder="Password" />
-                        <label class="inline">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"> remember me</span>
-                        </label>
-
-                        <button type="button" class="btn btn-info btn-sm">
-                            <i class="icon-key bigger-110"></i>
-                            Login
-                        </button>
-                    </form>
-                </div>
-            </div>
+        <div class="col-sm-7">
         </div>
     </div>
-</div>
 </div>
 <script type="text/javascript">
-    jQuery(function($) {
+    jQuery(function ($) {
         $('.input-mask-phone').mask('(999) 999-9999');
     });
 </script>

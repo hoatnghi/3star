@@ -6,7 +6,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class AdminController {
 
     def review() {
-        def invite = Invitation.findAllByStatusAndInvitedBy('REQ', '0000000000')
+        def invite = Invitation.findAllByInvitedByAndStatus(User.findByUsername(request.getRemoteUser()), 'REQ')
         render(view: "review", model: [invitation: invite])
     }
 

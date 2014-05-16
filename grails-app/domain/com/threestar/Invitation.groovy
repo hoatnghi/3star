@@ -7,7 +7,7 @@ class Invitation implements Serializable {
     String countryCode
     String phoneNumber
     String code
-    String invitedBy
+    User invitedBy
     Date createdDate = NIL_DATE
     Date validDate = NIL_DATE
     Date lastUpdate = NIL_DATE
@@ -15,12 +15,14 @@ class Invitation implements Serializable {
 
     static constraints = {
         phoneNumber blank: false, unique: true
-        countryCode blank: false, minSize: 2, maxSize: 2
+        countryCode blank: false, minSize: 1, maxSize: 3
         code blank: false
     }
 
     static hasMany = [payments: Payment]
     static mappedBy = [payments: "invitation"]
+
+    static belongsTo = [invitedBy: User]
 
     def beforeInsert() {
         if (createdDate == NIL_DATE) {

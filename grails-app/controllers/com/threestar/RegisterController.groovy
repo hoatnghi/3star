@@ -11,40 +11,60 @@ class RegisterController {
     def processFlow = {
         register {
             on("verify") {
-                def invitation = Invitation.findAllByPhoneNumberAndInvitedByAndCountryCodeAndStatus(params.phoneNumber,
-                        params.invitedBy, params.countryCode, 'ORD')
-                if (invitation.size() < 1) {
-                    flow.message = "Not phone number in our system"
+                if (!params.invitedBy) {
+                    flow.message = "Must have the phone number that send the invitation."
                     return error()
                 }
-                def parentPhoneNumber = invitation[0].invitedBy
-                def parent = User.findByPhoneNumber(parentPhoneNumber);
-                if (parent == null) {
-                    flow.message = "No User found"
+                def invitedBy = User.findByPhoneNumber(params.invitedBy)
+                if (!invitedBy) {
+                    flow.message = "We could NOT find anyone has that phone number in our system."
                     return error()
                 }
-                def payments = [:]
-                payments.put(parent.username, parent.level * PAYMENT_AMOUNT)
-                def parentId = parent.parentId
-                while (parentId != null && parentId != '') {
-                    def nextLevel = User.findByParentId(parentId)
-                    if (nextLevel != null) {
-                        payments.put(nextLevel.username, nextLevel.level * PAYMENT_AMOUNT)
-                        parentId = nextLevel.parentId
+
+                def invitation = Invitation.findByPhoneNumberAndCountryCodeAndStatus(
+                        params.phoneNumber, params.countryCode, 'ORD')
+                if (!invitation) {
+                    flow.message = "We could NOT see any invitation for your phone number."
+                    return error()
+                }
+                flow.invitation = invitation
+
+                def parent = invitation.invitedBy
+                if (!parent) {
+                    flow.message = "We could NOT see anyone sent this invitation."
+                    return error()
+                }
+                if (parent.phoneNumber != params.invitedBy) {
+                    flow.message = params.invitedBy + "has NOT sent this invitation. Please double check."
+                    return error()
+                }
+                def payments = invitation.payments
+                if (!payments) {
+                    payments = []
+                    while (parent) {
+                        def payment = new Payment(amount: parent.level * PAYMENT_AMOUNT, status: 'PENDING',
+                                payTo: parent.username, invitation: invitation)
+                        payment.save(flush: true)
+                        payments.add(payment)
+                        println(parent.username + "-" + parent.level + "-" + parent.phoneNumber)
+                        // looking for up line
+                        parent = User.findByUsername(parent.parentId)
                     }
                 }
-                [paymenst: payments]
+                [payments: payments]
             }.to "payment"
             on("request").to "sendRequest"
-            on("error").to "complete"
-            on(Exception).to "complete"
+            on("error").to "register"
+            on(Exception).to "register"
         }
 
         payment {
-            on("previous").to "register"
-            on("success").to "complete"
-            on("error").to "complete"
-            on(Exception).to "complete"
+            on("verify").to "register"
+            on("confirm") {
+                println("confirm")
+            }.to "complete"
+            on("error").to "payment"
+            on(Exception).to "payment"
         }
 
         complete {

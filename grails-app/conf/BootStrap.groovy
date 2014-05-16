@@ -9,7 +9,7 @@ class BootStrap {
             /*The default password is 'password'*/
             def password = 'admin'
             def user = new User(username: 'admin', password: password, phoneNumber: '0000000000', level: 1,
-                    parentId: '', enabled: true,
+                    parentId: 'NOBODY', enabled: true, countryCode: '256',
                     accountExpired: false, accountLocked: false, passwordExpired: false)
                     .save(flush: true)
             def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true, insert: true)
