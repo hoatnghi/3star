@@ -107,7 +107,7 @@
                                  alt="Jason's Photo"/>
                             <span class="user-info">
                                 <small>Welcome,</small>
-                                Jason
+                                <sec:loggedInUserInfo field="username"/>
                             </span>
 
                             <i class="icon-caret-down"></i>
@@ -125,6 +125,14 @@
                                 <g:link controller="secure" action="profile">
                                     <i class="icon-user"></i>
                                     Profile
+                                </g:link>
+                            </li>
+                            <li class="divider"></li>
+
+                            <li>
+                                <g:link controller="secure" action="changePassword">
+                                    <i class="icon-cog"></i>
+                                    Change Password
                                 </g:link>
                             </li>
 

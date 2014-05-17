@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <title>Three Star Company - Register Process</title>
     <meta name="layout" content="main"/>
 </head>
 
@@ -38,7 +39,7 @@
                 <div class="span12">
                     <div class="widget-box">
                         <div class="widget-header widget-header-blue widget-header-flat">
-                            <h4 class="lighter">Sign Up Process</h4>
+                            <h4 class="lighter">Payment Info</h4>
                         </div>
 
                         <div class="widget-body">
@@ -98,7 +99,7 @@
                                         </thead>
 
                                         <tbody>
-                                        <g:each in="${payments}" var="p">
+                                        <g:each in="${invitation.payments}" var="p">
                                             <tr>
                                                 <td>${p.payTo}</td>
                                                 <td>
@@ -141,7 +142,7 @@
                                     </table>
                                 </div>
                                 <g:form class="form-horizontal">
-                                    <div class="row-fluid wizard-actions">
+                                    <div class="row-fluid wizard-actions center">
                                         <button type="submit" class="btn btn-prev" id="_eventId_verify"
                                                 name="_eventId_verify">
                                             <i class="icon-arrow-left"></i>

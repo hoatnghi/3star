@@ -1,5 +1,7 @@
 package com.threestar
 
+import com.threestar.utils.InvitationUtil
+
 class RegisterController {
 
     private static final double PAYMENT_AMOUNT = 10000;
@@ -38,20 +40,7 @@ class RegisterController {
                     flow.message = params.invitedBy + "has NOT sent this invitation. Please double check."
                     return error()
                 }
-                def payments = invitation.payments
-                if (!payments) {
-                    payments = []
-                    while (parent) {
-                        def payment = new Payment(amount: parent.level * PAYMENT_AMOUNT, status: 'PENDING',
-                                payTo: parent.username, invitation: invitation)
-                        payment.save(flush: true)
-                        payments.add(payment)
-                        println(parent.username + "-" + parent.level + "-" + parent.phoneNumber)
-                        // looking for up line
-                        parent = User.findByUsername(parent.parentId)
-                    }
-                }
-                [payments: payments]
+                flow.invitation = invitation
             }.to "payment"
             on("request").to "sendRequest"
             on("error").to "register"
@@ -92,11 +81,8 @@ class RegisterController {
                 }
 
                 // create user to login
-                def user = new User(username: params.username, password: params.password,
-                    phoneNumber: flow.invitation.phoneNumber, level: invitation.invitedBy.level + 1,
-                    parentId: invitation.invitedBy.username, enabled: true, countryCode: flow.invitation.countryCode,
-                    accountExpired: false, accountLocked: false, passwordExpired: false).save(flush: true)
-                UserRole.create(user, userRole, true)
+                InvitationUtil.completeInvitation(params.username, params.password, flow.invitation.phoneNumber,
+                        flow.invitation.countryCode, invitation.invitedBy.level + 1, invitation.invitedBy.username)
             } .to "complete"
             on("error").to "signup"
             on("previous").to "payment"

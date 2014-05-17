@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <title>Three Star Company - Register Process</title>
     <meta name="layout" content="main"/>
 </head>
 
@@ -38,7 +39,7 @@
                 <div class="span12">
                     <div class="widget-box">
                         <div class="widget-header widget-header-blue widget-header-flat">
-                            <h4 class="lighter">Sign Up Process</h4>
+                            <h4 class="lighter">Verification</h4>
                         </div>
 
                         <div class="widget-body">
@@ -50,12 +51,12 @@
                                             <span class="title">Verification</span>
                                         </li>
 
-                                        <li data-target="#step2" class="active">
+                                        <li data-target="#step2">
                                             <span class="step">2</span>
                                             <span class="title">Payment Info</span>
                                         </li>
 
-                                        <li data-target="#step3" class="active">
+                                        <li data-target="#step3">
                                             <span class="step">3</span>
                                             <span class="title">Information</span>
                                         </li>
@@ -66,36 +67,34 @@
                                         </li>
                                     </ul>
                                 </div>
-
-                                <g:hasErrors bean="${invitation}">
+                                <hr/>
+                                <g:if test="${message}">
+                                    <div class="well">
+                                        <h3 class="lighter block red">${message}</h3>
+                                    </div>
+                                </g:if>
+                                <g:hasErrors bean="${payments}">
                                     <div class="errors">
-                                        <g:renderErrors bean="${invitation}" as="list"/>
+                                        <g:renderErrors bean="${payments}" as="list"/>
                                     </div>
                                 </g:hasErrors>
-                                <div>
-                                    <g:if test="${message}">
-                                        <h3 class="lighter block red">${message}</h3>
-                                    </g:if>
-                                    <g:else>
-                                        <h3 class="lighter block green">Enter the following information</h3>
-                                    </g:else>
-                                </div>
                                 <g:form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="country">Your country</label>
-
-                                        <g:select id="country" name="countryCode" keys="${[256, 254, 255]}"
-                                                  from="${['Uganda', 'Kenya', 'Tanzania']}"
-                                                  value="${invitation?.countryCode}"
-                                                  data-placeholder="Choose a Country...">
-                                        </g:select>
+                                        <label class="col-sm-3 control-label no-padding-right" for="country">Your country</label>
+                                        <div class="col-sm-9">
+                                            <g:select id="country" name="countryCode" keys="${[256, 254, 255]}"
+                                                      from="${['Uganda', 'Kenya', 'Tanzania']}"
+                                                      value="${invitation?.countryCode}"
+                                                      data-placeholder="Choose a Country...">
+                                            </g:select>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label no-padding-right" for="phoneNumber"> Phone Number</label>
 
                                         <div class="col-sm-9">
-                                            <input class="form-control input-mask-phone"
+                                            <input class="col-xs-10 col-sm-5 input-mask-phone"
                                                    placeholder="(999) 999-9999" type="text" id="phoneNumber"
                                                    name="phoneNumber" value="${invitation?.phoneNumber}"/>
                                         </div>
@@ -107,14 +106,14 @@
                                         </label>
 
                                         <div class="col-sm-9">
-                                            <input class="form-control input-mask-phone"
+                                            <input class="col-xs-10 col-sm-5 input-mask-phone"
                                                    placeholder="(999) 999-9999" type="text" id="invitedBy"
                                                    name="invitedBy"
                                                    value="${invitation?.invitedBy?.phoneNumber}"/>
                                         </div>
                                     </div>
 
-                                    <div class="row-fluid wizard-actions">
+                                    <div class="row-fluid wizard-actions center">
                                         <button type="submit" id="_eventId_request" name="_eventId_request"
                                                 class="btn btn-prev">
                                             <i class="icon-arrow-left"></i>
@@ -136,7 +135,6 @@
             <!-- PAGE CONTENT ENDS -->
         </div>
     </div>
-
 </div>
 <script>
     $('.input-mask-phone').mask('(999) 999-9999');

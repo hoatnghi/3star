@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <title>Three Star Company - Register Process</title>
     <meta name="layout" content="main"/>
 </head>
 
@@ -38,7 +39,7 @@
                 <div class="span12">
                     <div class="widget-box">
                         <div class="widget-header widget-header-blue widget-header-flat">
-                            <h4 class="lighter">Sign Up Process</h4>
+                            <h4 class="lighter">Congratuation</h4>
                         </div>
 
                         <div class="widget-body">
@@ -76,7 +77,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row-fluid wizard-actions">
+                                    <div class="row-fluid wizard-actions center">
 
                                         <button type="submit" class="btn btn-success btn-next" id="_eventId_finish"
                                                 name="_eventId_finish" data-last="Finish ">

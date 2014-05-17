@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <title>Three Star Company - Register Process</title>
     <meta name="layout" content="main"/>
 </head>
 
@@ -38,7 +39,7 @@
                 <div class="span12">
                     <div class="widget-box">
                         <div class="widget-header widget-header-blue widget-header-flat">
-                            <h4 class="lighter">Sign Up Process</h4>
+                            <h4 class="lighter">Account Information</h4>
                         </div>
 
                         <div class="widget-body">
@@ -67,11 +68,11 @@
                                     </ul>
                                 </div>
                                 <hr/>
-                                <div class="well">
-                                    <g:if test="${message}">
+                                <g:if test="${message}">
+                                    <div class="well">
                                         <h3 class="lighter block red">${message}</h3>
-                                    </g:if>
-                                </div>
+                                    </div>
+                                </g:if>
                                 <g:hasErrors bean="${payments}">
                                     <div class="errors">
                                         <g:renderErrors bean="${payments}" as="list"/>
@@ -132,7 +133,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="row-fluid wizard-actions">
+                                    <div class="row-fluid wizard-actions center">
                                         <button type="submit" class="btn btn-prev" id="_eventId_previous"
                                                 name="_eventId_previous">
                                             <i class="icon-arrow-left"></i>

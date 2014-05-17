@@ -43,18 +43,18 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <g:hasErrors bean="${bean}">
-                <div class="errors">
-                    <g:renderErrors bean="${bean}" as="list"/>
-                </div>
-            </g:hasErrors>
+            <g:eachError bean="${book}">
+                <li><g:message error="${it}" /></li>
+            </g:eachError>
             <div>
-                <g:if test="${flash.message}">
-                    <h3 class="lighter block green">${flash.message}</h3>
-                </g:if>
-                <g:else>
-                    <h3 class="lighter block green">Enter the following information</h3>
-                </g:else>
+                <h3 class="lighter block green">
+                    <g:if test="${bean}">
+                        Your request has been sent to administrator for processing. We will contact you via SMS.
+                    </g:if>
+                    <g:else>
+                        Enter the following information
+                    </g:else>
+                </h3>
             </div>
         </div>
 
@@ -95,7 +95,6 @@
                                     </div>
                                 </div>
                             </fieldset>
-                            <hr/>
 
                             <div class="form-actions center">
                                 <button type="submit" class="btn btn-sm btn-success">

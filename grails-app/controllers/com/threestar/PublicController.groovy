@@ -1,5 +1,7 @@
 package com.threestar
 
+import com.threestar.utils.InvitationUtil
+
 class PublicController {
 
     def index() {}
@@ -24,15 +26,20 @@ class PublicController {
     }
 
     def reqInvitation() {
-        def adminPhone = grailsApplication.metadata.'admin.phoneNumber'
-        def invitation = new Invitation(phoneNumber: params.phoneNumber, countryCode: params.countryCode,
-                code: '000000', invitedBy: User.findByPhoneNumber(adminPhone), status: 'REQ')
-        if (!invitation.hasErrors()) {
-            invitation.save(flush: true)
-            if (!invitation.hasErrors()) {
-                flash.message = "Your request has been sent to administrator for processing. We will contact you via SMS."
-            }
+        def phoneNumber = params.phoneNumber
+        def countryCode = params.countryCode
+        if (InvitationUtil.checkRequest(phoneNumber, countryCode)) {
+            flash.message = "Your request has already been in our queue. Please wait for the process."
         }
-        render(view: "join", model: [bean: invitation])
+        if (InvitationUtil.checkInvitation(phoneNumber, countryCode)) {
+            flash.message = "Your phone number has been invited. Please process your payments."
+        }
+        if (InvitationUtil.checkUser(phoneNumber, countryCode)) {
+            flash.message = "You has been the valid user in our system."
+        }
+        def request = new Request(phoneNumber: phoneNumber, countryCode: countryCode, requestDate: new Date())
+                .save(flush: true)
+
+        render(view: "join", model: [bean: request])
     }
 }

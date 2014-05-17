@@ -38,7 +38,7 @@
 
     <li <g:if test="${message}">class="active"</g:if>>
         <g:link controller="secure" action="message">
-            <i class="icon-text-width"></i>
+            <i class="icon-envelope"></i>
             <span class="menu-text">Message</span>
         </g:link>
     </li>
@@ -51,7 +51,7 @@
     </li>
     <li <g:if test="${invite}">class="active"</g:if>>
         <g:link controller="secure" action="invite">
-            <i class="icon-envelope"></i>
+            <i class="icon-inbox"></i>
             <span class="menu-text">Invite</span>
         </g:link>
     </li>

@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <title>Three Star Company - Send Invitation</title>
     <meta name="layout" content="main"/>
 </head>
 
@@ -25,7 +26,7 @@
             <i class="icon-home home-icon"></i>
             <a href="${createLink(uri: '/')}">Home</a>
         </li>
-        <li class="active">Register Process</li>
+        <li class="active">Send Invitation</li>
     </ul><!-- .breadcrumb -->
 
 </div>
@@ -34,11 +35,6 @@
     <div class="row">
         <div class="col-xs-8 center">
             <!-- PAGE CONTENT BEGINS -->
-            <g:hasErrors bean="${invitation}">
-                <div class="errors">
-                    <g:renderErrors bean="${invitation}" as="list"/>
-                </div>
-            </g:hasErrors>
             <div>
                 <g:if test="${flash.message}">
                     <h3 class="lighter block red">${flash.message}</h3>

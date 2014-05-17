@@ -49,29 +49,20 @@
                             Phone Number
                         </th>
                         <th>
-                            <i class="icon-user bigger-110 hidden-480"></i>
-                            Invited By
-                        </th>
-                        <th>
                             <i class="icon-calendar bigger-110 hidden-480"></i>
                             Requested Date
                         </th>
-                        <th class="hidden-480">Status</th>
 
                         <th></th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <g:each in="${invitation}" var="req">
+                    <g:each in="${requests}" var="req">
                         <tr id="_${req.phoneNumber}">
                             <td>${req.countryCode}</td>
                             <td>${req.phoneNumber}</td>
-                            <td>(+${req.invitedBy.countryCode}) - ${req.invitedBy.phoneNumber}</td>
-                            <td>${req.createdDate}</td>
-                            <td class="hidden-480">
-                                <span class="label label-sm label-warning">${req.status}</span>
-                            </td>
+                            <td>${req.requestDate}</td>
                             <td>
                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
                                     <a id="approve.${req.phoneNumber}" class="blue"
