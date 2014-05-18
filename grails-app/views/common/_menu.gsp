@@ -49,6 +49,12 @@
             <span class="menu-text">Profile</span>
         </g:link>
     </li>
+    <li <g:if test="${downline}">class="active"</g:if>>
+        <g:link controller="secure" action="downline">
+            <i class="icon-level-down"></i>
+            <span class="menu-text">Down Line</span>
+        </g:link>
+    </li>
     <li <g:if test="${invite}">class="active"</g:if>>
         <g:link controller="secure" action="invite">
             <i class="icon-inbox"></i>

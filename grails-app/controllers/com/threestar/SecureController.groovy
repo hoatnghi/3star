@@ -77,4 +77,9 @@ class SecureController {
         flash.message = 'Your password has been changed.'
         render view: 'changePass'
     }
+
+    def downline() {
+        def downLine = User.findAllByParentId(request.getRemoteUser())
+        render view: "downline", model: ['lines' : downLine]
+    }
 }
